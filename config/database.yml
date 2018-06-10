@@ -3,8 +3,8 @@ default: &default
   encoding: utf8
   pool: 5
   username: root
-  password: grys003
-  socket: /var/run/mysqld/mysqld.sock
+  password: root
+  host: 127.0.0.1
 
 development:
   <<: *default
@@ -39,5 +39,5 @@ test:
 production:
   <<: *default
   database: jav_production
-  username: syhsyh9696
+  username: root
   password: <%= ENV['UJN-WECHAT-API_DATABASE_PASSWORD'] %>

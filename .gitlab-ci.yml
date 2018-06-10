@@ -1,0 +1,36 @@
+image: ruby:2.5.1
+stages:
+  - deploy
+
+deploy_staging:
+  environment: staging
+  stage: deploy
+  tags:
+    - online-node
+  only:
+      - develop
+  script:
+    - which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )
+    - eval $(ssh-agent -s)
+    # Add the SSH key stored in SSH_PRIVATE_KEY variable to the agent store
+    - ssh-add <(echo -e "$SSH_PRIVATE_KEY")
+    - gem install bundle
+    - bundle install
+    - bundle exec cap staging deploy
+
+
+deploy:
+  environment: production
+  stage: deploy
+  tags:
+    - online-node
+  only:
+    - master
+  script:
+    - which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )
+    - eval $(ssh-agent -s)
+    # Add the SSH key stored in SSH_PRIVATE_KEY variable to the agent store
+    - ssh-add <(echo -e "$SSH_PRIVATE_KEY")
+    - gem install bundle
+    - bundle install
+    - bundle exec cap production deploy

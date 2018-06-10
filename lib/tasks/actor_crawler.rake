@@ -55,11 +55,11 @@ def author_page_num(nokogiri_doc)
 end
 
 # Max page https://www.javbus2.pw/actresses/717
-JAVBUS_MAX_PAGE = 717
+JAVBUS_MAX_PAGE = 745
 
 def get_all_actors_label_from_javbus
   page = Mechanize.new
-  firsturl = "https://www.javbus2.pw/actresses/"
+  firsturl = "#{$JAVBUS_URL}/actresses/"
   #1.upto(JAVBUS_MAX_PAGE).each do |num|
   1.upto(JAVBUS_MAX_PAGE).each do |num|
     url = firsturl + num.to_s
