@@ -1,6 +1,6 @@
-# source 'https://rubygems.org'
+source 'https://rubygems.org'
 
-source 'https://gems.ruby-china.org'
+# source 'https://gems.ruby-china.org'
 
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
@@ -37,7 +37,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 gem 'mechanize'
-# gem 'whenever'
+
 gem 'grape'
 gem 'grape-entity'
 
@@ -55,8 +55,11 @@ gem 'chart-js-rails'
 # 分页
 gem 'will_paginate-bootstrap'
 
-gem 'whenever', :require => false
 
+gem 'whenever'
+
+# 字符串颜色
+gem 'colorize'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
@@ -74,18 +77,9 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 
-
-  # 其中`capistrano-rails`包含了以下三个插件。
-  # gem 'capistrano/bundler'
-  # gem 'capistrano/rails/assets'
-  # gem 'capistrano/rails/migrations'
-  # 你也可以分别一个个加进去，但是何必呢？这些基本都是`rails`部署必须的。
-  # 直接用`gem 'capistrano-rails'`这一个就好了。
   gem 'capistrano-rails'
-
-  # 对`passenger`与`rbenv`的支持
-  gem 'capistrano-passenger'
   gem 'capistrano-rbenv'
+  gem 'capistrano3-puma' 
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

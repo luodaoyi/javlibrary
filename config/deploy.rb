@@ -4,7 +4,7 @@
 lock "~> 3.11.0"
 
 set :application, "jav_library_rails"
-set :repo_url, "git@gitlab.com:AsuraProject/javlibrary-rails.git"
+set :repo_url, "git@github.com:luodaoyi/javlibrary.git"
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
@@ -35,7 +35,25 @@ append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/syst
 # set :local_user, -> { `git config user.name`.chomp }
 
 # Default value for keep_releases is 5
-set :keep_releases, 20
+set :keep_releases, 5
 
 # Uncomment the following to require manually verifying the host key before first deploy.
 # set :ssh_options, verify_host_key: :secure
+
+# If the environment differs from the stage name
+set :rails_env, 'production'
+
+# Skip migration if files in db/migrate were not modified, Defaults to false
+set :conditionally_migrate, true
+
+
+# puma相关配置
+set :puma_bind,       "unix://#{shared_path}/tmp/sockets/puma.sock"
+set :puma_state,      "#{shared_path}/tmp/pids/puma.state"
+set :puma_pid,        "#{shared_path}/tmp/pids/puma.pid"
+set :puma_access_log, "#{release_path}/log/puma.error.log"
+set :puma_error_log,  "#{release_path}/log/puma.access.log"
+set :puma_conf, "#{shared_path}/puma.rb"
+
+set :puma_preload_app, true
+set :puma_init_active_record, true  # Change to false when not using ActiveRecord

@@ -1,7 +1,16 @@
 # AVDICT
 
+## travisci status
+
+[![Build Status](https://travis-ci.org/luodaoyi/javlibrary.svg?branch=master)](https://travis-ci.org/luodaoyi/javlibrary)
+
+## gitlab ci status
 [![pipeline status](https://gitlab.com/AsuraProject/javlibrary-rails/badges/master/pipeline.svg)](https://gitlab.com/AsuraProject/javlibrary-rails/commits/master)
 [![coverage report](https://gitlab.com/AsuraProject/javlibrary-rails/badges/master/coverage.svg)](https://gitlab.com/AsuraProject/javlibrary-rails/commits/master)
+
+
+demo url :  [av.eq.rs](https://av.eq.rs/)  禁止国内ip访问
+
 
 AVDICT => AV + Addict 一种优雅的方式创建你自己的AV数据库。
 

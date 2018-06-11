@@ -1,0 +1,17 @@
+language: ruby
+branches:
+  only:
+  - master
+  - stable
+services:
+- mysql
+before_install:
+- mysql -e 'CREATE DATABASE IF NOT EXISTS circles_test CHARACTER SET utf8mb4;'
+- cp ./.travis.database.yml ./config/database.yml
+after_success:
+- openssl aes-256-cbc -k $DEPLOY_KEY -in config/deploy_id_rsa_enc_travis -d -a -out
+  ~/.ssh/id_rsa
+- bundle exec cap production deploy
+env:
+  global:
+    secure: LoCyT4oiitpqps1cAanfjYY/xp6pvN2qDS9ddKoUefewVS0Pxsz0GCJ8j1AcsnnBh4CwLeBnPnmX9FAxRRckhHVYaU9c7Uy5qwTb+57VHlowNdPfbjY3Xs5inrHSgd8w3jKqxGN/zZzsLo1kh5lIs9FsCJ1hi0m1YFpz3JQpshCyN/Xs5vr1mKqcIiM7wbCxAeFFCCd/MGyRJClWYS+DyuYUsHFfhBU4d0EKMVfSMY+0SSsuNoVxUwdkYMF5UoQ4egILZxATE81O9ZkL07tKXssia6rfIyC4zNqIhDZRIuZRHd5ieSnKtcAcwCXo2ETBCPGrf25lc/tV4ZbLGReoSgUo4oMkBPrtrqcDixwG1pHpZyDXY3ToPy3/DLrDxbd+ICOTp4vqOujnWyFWsgjswEqo2OIU4b++kgy4jDdEQk0K15Zn88QA1lTk5JtTVt21QtxMtdKHOQ4DqX9nsuMPgNg2l8Fr47bYom+k3tEsrTYvKKQ5BEq4t2HOiTVT78gqmvZK5XqGJO6/5+938gHQlY+f+XIZly9i+AnXrXzOjQ5WLchti1iXUXtngCgeNozp6KCr1pZwkHlvuqVNtozBYkHqopN/kHH+Hq3wZ5YerL9j5ah+onA8SjOB/Ovv3s8boTx11FJFOSQfT/yOjxkCsz+fU1jGaU+xRszBO1LgL+o=
