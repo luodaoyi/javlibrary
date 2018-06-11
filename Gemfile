@@ -37,7 +37,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 gem 'mechanize'
-# gem 'whenever'
+
 gem 'grape'
 gem 'grape-entity'
 
@@ -55,8 +55,11 @@ gem 'chart-js-rails'
 # 分页
 gem 'will_paginate-bootstrap'
 
-gem 'whenever', :require => false
 
+gem 'whenever'
+
+# 字符串颜色
+gem 'colorize'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false

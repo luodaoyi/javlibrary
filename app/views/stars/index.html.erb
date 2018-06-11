@@ -7,7 +7,7 @@
   <h1>Stars page</h1>
   <br>
   <p>Source: <%= link_to 'Javlibray', 'http://www.ja14b.com/cn/star_mostfav.php' %></p>
-  <p>Last update time: <%= @stars[0].updated_at %></p>
+  <p>Last update time: <%= @stars.last!.updated_at %></p>
 </div>
 
 <ul class="list-group">
